@@ -4,14 +4,22 @@ import sys
 from flask_migrate import Migrate
 
 app = Flask(__name__)
+
+# Setup SQLAchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://apple@localhost:5432/todoapp'
+
+# Init SQLAchemy
 db = SQLAlchemy(app)
+
+# Init Migrate
+migrate = Migrate(app, db)
 
 
 class Todo(db.Model):
     __tablename__ = 'todos'
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(), nullable=False)
+    completed = db.Column(db.Boolean, nullable=False, default=False)
 
     # Dander-repr method
     def __repr__(self):
