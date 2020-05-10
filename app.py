@@ -19,7 +19,9 @@ class Todo(db.Model):
 # Create table
 db.create_all()
 
-
+# Route for /todos/create
+@app.route('/todos/create', methods=['POST'])
+# Route for index
 @app.route('/')
 def index():
     return render_template('index.html', data=Todo.query.all())
