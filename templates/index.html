@@ -4,12 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo App</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <form id="form">
       <input type="text" name="description" />
       <input type="submit" value="Create" />
     </form>
+    <div id="error" class="hidden">Something went wrong!</div>
     <ul id="todos">
       {% for d in data %}
       <li>{{ d.description }}</li>
@@ -31,6 +37,13 @@
           })
           .then(function (jsonResponse) {
             console.log(jsonResponse);
+            const liItem = document.createElement('li');
+            liItem.innerHTML = jsonResponse['description'];
+            document.getElementById('todos').appendChild(liItem);
+            document.getElementById('error').className = 'hidden';
+          })
+          .catch(() => {
+            document.getElementById('error').className = '';
           });
         e.preventDefault();
       };
