@@ -12,7 +12,7 @@
   </head>
   <body>
     <form id="form">
-      <input type="text" name="description" />
+      <input type="text" id="description" name="description" />
       <input type="submit" value="Create" />
     </form>
     <div id="error" class="hidden">Something went wrong!</div>
@@ -42,7 +42,7 @@
             document.getElementById('todos').appendChild(liItem);
             document.getElementById('error').className = 'hidden';
           })
-          .catch(() => {
+          .catch(function () {
             document.getElementById('error').className = '';
           });
         e.preventDefault();
