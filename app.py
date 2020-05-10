@@ -10,6 +10,10 @@ class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(), nullable=False)
 
+    # Dander-repr method
+    def __repr__(self):
+        return f'<Todo {self.id} {self.description}>'
+
 
 @app.route('/')
 def index():
