@@ -55,3 +55,9 @@ def create_todo():
 @app.route('/')
 def index():
     return render_template('index.html', data=Todo.query.all())
+
+# Route for set-completed
+@app.route('/todos/<todo_id>/set-completed', methods=['POST'])
+def set_completed_todo(todo_id):
+    try:
+        completed = request.get_json()['completed']
