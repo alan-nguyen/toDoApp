@@ -68,3 +68,4 @@ def set_completed_todo(todo_id):
         db.session.rollback()
     finally:
         db.session.close()
+    return redirect(url_for('index'))
