@@ -54,7 +54,7 @@ def create_todo():
 # Route for index
 @app.route('/')
 def index():
-    return render_template('index.html', data=Todo.query.all())
+    return render_template('index.html', data=Todo.query.order_by('id').all())
 
 # Route for set-completed
 @app.route('/todos/<todo_id>/set-completed', methods=['POST'])
