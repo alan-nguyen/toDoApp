@@ -61,9 +61,9 @@ def create_todo():
         return jsonify(body)
 
 # Route for index
-@app.route('/')
+@app.route('/lists/<list_id>')
 def index():
-    return render_template('index.html', data=Todo.query.order_by('id').all())
+    return render_template('index.html', data=Todo.query.filter_by(list_id=list_id).order_by('id').all())
 
 # Route for set-completed
 @app.route('/todos/<todo_id>/set-completed', methods=['POST'])
