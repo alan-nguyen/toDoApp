@@ -26,6 +26,13 @@ class Todo(db.Model):
         return f'<Todo {self.id} {self.description}>'
 
 
+class TodoList(db.Model):
+    __tablename__ = 'todolists'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(), nullable=False)
+    todos = db.relationship('Todo', backref='list', lazy=True)
+
+
 # Create table
 db.create_all()
 
