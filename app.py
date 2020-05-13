@@ -60,9 +60,9 @@ def create_todo():
     else:
         return jsonify(body)
 
-# Route for index
+# Route for Homepage with list todos
 @app.route('/lists/<list_id>')
-def index():
+def get_list_todos():
     return render_template('index.html', data=Todo.query.filter_by(list_id=list_id).order_by('id').all())
 
 # Route for set-completed
