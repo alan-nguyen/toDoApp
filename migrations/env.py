@@ -1,4 +1,5 @@
 from __future__ import with_statement
+from flask import current_app
 
 import logging
 from logging.config import fileConfig
@@ -21,7 +22,6 @@ logger = logging.getLogger('alembic.env')
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-from flask import current_app
 config.set_main_option(
     'sqlalchemy.url',
     str(current_app.extensions['migrate'].db.engine.url).replace('%', '%%'))
@@ -70,7 +70,7 @@ def run_migrations_online():
             script = directives[0]
             if script.upgrade_ops.is_empty():
                 directives[:] = []
-                logger.info('No changes in schema detected.')
+                logger.info('No changes in schema detectetodo.')
 
     connectable = engine_from_config(
         config.get_section(config.config_ini_section),
