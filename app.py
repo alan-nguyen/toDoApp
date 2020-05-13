@@ -65,6 +65,11 @@ def create_todo():
 def get_list_todos():
     return render_template('index.html', data=Todo.query.filter_by(list_id=list_id).order_by('id').all())
 
+# Route for index
+@app.route('/')
+def index():
+    return redirect(url_for('get_list_todos', list_id=1))
+
 # Route for set-completed
 @app.route('/todos/<todo_id>/set-completed', methods=['POST'])
 def set_completed_todo(todo_id):
