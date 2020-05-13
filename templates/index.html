@@ -37,7 +37,11 @@
     <div class="lists-wrapper">
       <ul id="lists">
         {% for list in lists %}
-        <li>{{ list.name }}</li>
+        <li>
+          <a href="/lists/{{ list.id }}">
+            {{ list.name }}
+          </a>
+        </li>
         {% endfor %}
       </ul>
     </div>
